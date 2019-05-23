@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+<title>Vertical Navigation Bar</title>
+<link rel="stylesheet" type="text/css" href="index.css">
+<meta charset="UTF-8">
+<meta name="description" content="Vertical Navigation Bar"">
+<meta name="author" content="Alex Megahy">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	
+<div class = "nav-bar">
+	<button class = "expand" onclick="expand()">&#9776;</button>
+	<h4 class="welcome">Welcome</h4>
+	<div class = "dropdown">
+		<button type = "button">Title</button>
+		<div class = "dropdown-content">
+				<a href="">Item</a>
+				<a href="">Item</a>
+				<a href="">Item</a>
+				<a href="">Item</a>
+				<a href="">Item</a>
+				<a href="">Item</a>
+				<a href="">Item</a>
+		</div>
+	</div>
+	<div class = "dropdown">
+		<button type = "button">Title</button>
+		<div class = "dropdown-content">
+				<a href="">Item</a>
+				<a href="">Item</a>
+		</div>
+	</div>
+</div>
+
+<div class="main-wrapper">
+	<p>This is an example paragraph to test the margin and width of the main-wrapper div and the paragraph tag.</p>
+
+	<p>TEST TEST  TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST</p>
+</div>
+
+<script type="text/javascript">
+
+	function expand(){
+
+		if (document.getElementsByClassName("expand")[0].innerHTML == "X"){//If nav bar has already been expanded
+
+			shrink();
+			return;
+		}else{
+
+			//Reset all of thr transition values in case they have been changed by shrink()
+			document.getElementsByClassName("welcome")[0].style.transition = "all 2s";
+			document.getElementsByClassName("main-wrapper")[0].style.transition = "all 1s";
+			document.getElementsByClassName("nav-bar")[0].style.transition = "all 1s";
+
+			//Make welcome message visible 
+	    	document.getElementsByClassName("welcome")[0].style.visibility = "visible";
+			document.getElementsByClassName("welcome")[0].style.opacity = "1";
+			var dropdowns = document.getElementsByClassName("dropdown");//All of the dropdowns on the page
+	        
+	        for(var x=0; x < dropdowns.length; x++){
+
+				dropdowns[x].style.transition = "all 2s";//Reset transition same as above
+				//Make each dropdown visible 
+				dropdowns[x].style.visibility = "visible";
+				dropdowns[x].style.opacity = "1";		    
+	        }
+
+			document.getElementsByClassName("nav-bar")[0].style.width = "200px";
+			document.getElementsByClassName("main-wrapper")[0].style.width = "83.7%";//Change depending on screen size
+			document.getElementsByClassName("expand")[0].innerHTML = "X";
+		}
+	}
+
+	function shrink(){
+
+		//Change the transition values so the nav bar does not exit the screen first
+		document.getElementsByClassName("welcome")[0].style.transition = "all 1s";
+		document.getElementsByClassName("main-wrapper")[0].style.transition = "all 2s";
+		document.getElementsByClassName("nav-bar")[0].style.transition = "all 2s";
+
+		document.getElementsByClassName("welcome")[0].style.visibility = "hidden";
+		document.getElementsByClassName("welcome")[0].style.opacity = "0";
+		var dropdowns = document.getElementsByClassName("dropdown");
+	
+	    for(var x=0; x < dropdowns.length; x++){
+
+			dropdowns[x].style.transition = "all 1s";//Change transition same as above
+			dropdowns[x].style.visibility = "hidden";
+			dropdowns[x].style.opacity = "0";		    
+	    }
+
+	    //Reset values to orginal state
+		document.getElementsByClassName("nav-bar")[0].style.width = "0px";
+		document.getElementsByClassName("main-wrapper")[0].style.width = "98%";
+		document.getElementsByClassName("expand")[0].innerHTML = "&#9776;";
+	}
+</script>
+
+</body>
+</html>
